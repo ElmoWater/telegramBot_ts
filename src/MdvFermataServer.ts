@@ -3,16 +3,21 @@ import * as middlewares from './middlewares';
 
 import { Server } from '@overnightjs/core';
 import { Logger } from '@overnightjs/logger';
+import { MockAPI, TelegramAPI } from './middlewares';
 
 // tslint:disable: no-console
 class MdvFermataServer extends Server {
 
     private readonly SERVER_STARTED = 'MDV Fermata Server started on port: ';
+    private mockAPI:MockAPI;
+    private telegramAPI:TelegramAPI;
 
     constructor() {
         super(true);
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: true}));
+        this.mockAPI = new middlewares.MockAPI();
+        this.telegramAPI = new middlewares.TelegramAPI();
     }
 
     public start(port: number): void {
@@ -24,11 +29,8 @@ class MdvFermataServer extends Server {
         });
     }
     public makeApiCall():void{
-        const mockAPI = new middlewares.MockAPI();
-        const telegramAPI = new middlewares.TelegramAPI();
-        telegramAPI.init();
-        console.log('API CALL SAYS:',mockAPI.sendRequest());
-        // console.log('API CALL SAYS:',telegramAPI.sendRequest());
+        this.telegramAPI.init();
+        console.log('API CALL SAYS:',this.mockAPI.sendRequest());
     }
 }
 

@@ -2,6 +2,9 @@
   "name": "telegrambot2",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "12.16.x"
+  }
   "main": "build/start.js",
   "scripts": {
     "test": "none",

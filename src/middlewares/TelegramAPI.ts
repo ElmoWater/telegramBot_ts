@@ -5,8 +5,8 @@ import * as config from '../config/config.json';
 
 // tslint:disable: no-console
 export class TelegramAPI {
-  token:string;
-  bot:TelegramBot;
+  private token:string;
+  private bot:TelegramBot;
   constructor(){
     this.token = config.telegramApiToken;
     this.bot = new TelegramBot(this.token, {polling: true});
@@ -22,13 +22,12 @@ export class TelegramAPI {
           'one_time_keyboard': true
           }
       };
-    this.bot.onText(/\/keyboard (.+)/, (msg, match) => {
 
+    this.bot.onText(/\/keyboard (.+)/, (msg, match) => {
       this.bot.sendMessage(msg.chat.id, 'Welcome', options,);
     });
 
     this.bot.onText(/\/echo (.+)/, (msg, match) => {
-      console.log('MESSAGE');
       const chatId = msg.chat.id;
       const resp = (match !== null)? match[1]:'';
       this.bot.sendMessage(chatId, resp,{

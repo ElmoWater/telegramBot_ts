@@ -1,6 +1,6 @@
 
-import ExampleServer from './MdvFermataServer';
+import MdvFermataServer from './MdvFermataServer';
 
-const exampleServer = new ExampleServer();
-exampleServer.start(3000);
-exampleServer.makeApiCall();
+const mdvFermataServer = new MdvFermataServer();
+mdvFermataServer.start(3000);
+mdvFermataServer.makeApiCall();
