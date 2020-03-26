@@ -1,6 +1,6 @@
-#mdv-fermata-client#
+# mdv-fermata-client
 
-##install##
+## install
 npm install
 
 rename src/config/config.json.sample and enter your API key
