@@ -4,7 +4,7 @@
   "description": "",
   "engines": {
     "node": "12.16.x"
-  }
+  },
   "main": "build/start.js",
   "scripts": {
     "test": "none",
